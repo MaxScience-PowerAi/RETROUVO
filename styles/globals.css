@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cm-green:   #007a5e;
+  --cm-red:     #ce1126;
+  --cm-yellow:  #fcd116;
+  --navy:       #1e3a8a;
+  --navy-dark:  #0f172a;
+  --cream:      #faf9f7;
+  --warm:       #f5f0e8;
+  --warm-border:#e8e0d0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--navy-dark);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Barre drapeau animée ── */
+.flag-bar {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--cm-green)  0%,   var(--cm-green)  33%,
+    var(--cm-red)   33%,  var(--cm-red)   66%,
+    var(--cm-yellow) 66%, var(--cm-yellow) 100%,
+    var(--cm-green) 100%
+  );
+  background-size: 200% 100%;
+  animation: flag-slide 12s linear infinite;
+  opacity: 0.75;
+}
+
+/* ── Hero doux ── */
+.hero-soft {
+  background-color: var(--navy-dark);
+  background-image:
+    radial-gradient(ellipse at 15% 60%, rgba(0,122,94,.2)   0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(206,17,38,.1)  0%, transparent 45%),
+    radial-gradient(ellipse at 55% 90%, rgba(252,209,22,.06) 0%, transparent 40%);
+}
+
+/* ── Glassmorphism ── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(12px);
+}
+
+/* ── Hover lift ── */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Input focus ── */
+.input-soft:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 122, 94, 0.15);
+  border-color: rgba(0, 122, 94, 0.4) !important;
+  transition: all 0.2s;
+}
+
+/* ── Montant bouton ── */
+.amt-btn {
+  border: 1.5px solid var(--warm-border);
+  border-radius: 14px;
+  padding: 10px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fff;
+  color: #374151;
+  font-family: 'Inter', sans-serif;
+}
+.amt-btn:hover,
+.amt-btn.selected {
+  border-color: var(--cm-green);
+  background: rgba(0, 122, 94, 0.05);
+  color: var(--cm-green);
+}
+
+/* ── Stripes camerounaises ── */
+.cm-stripe-green { border-left: 3px solid rgba(0, 122, 94, 0.45); }
+.cm-stripe-red   { border-left: 3px solid rgba(206, 17, 38, 0.45); }
+
+/* ── Quote block ── */
+.quote-block {
+  border-left: 3px solid var(--cm-yellow);
+  padding: 1rem 1.25rem;
+  background: rgba(252, 209, 22, 0.04);
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+}
+
+/* ── Scrollbar fine ── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+
+/* ── Sélection ── */
+::selection { background: rgba(0, 122, 94, 0.18); }
+
+/* ── Steps chat ── */
+.step-done   { background: var(--cm-green); color: #fff; }
+.step-active { background: var(--navy);     color: #fff; }
+.step-idle   { background: #e8edf2;         color: #94a3b8; }
+
+/* ── Cartes communauté ── */
+.com-card {
+  border: 1.5px solid var(--warm-border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  background: #fff;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  cursor: pointer;
+}
+.com-card:hover    { border-color: rgba(0,122,94,.4); box-shadow: 0 8px 24px rgba(0,0,0,.06); }
+.com-card.active   { border-color: var(--cm-green); background: rgba(0,122,94,.03); }
+
+/* ── Stripe jaune (page éthique) ── */
+.cm-stripe-yellow { border-left: 3px solid rgba(252, 209, 22, 0.45); }
+
+/* ── Toast notification entrante ── */
+.toast-in {
+  animation: toastIn 0.4s cubic-bezier(.22,1,.36,1) both;
+}
+
+/* ── Keyframes ── */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-16px) scale(0.95); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+}
+
+@keyframes flag-slide {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
